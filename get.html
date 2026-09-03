@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get BFL — Bhailog Fantasy League</title>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="BFL is a faster way to follow your Fantasy Premier League team — live points with projected bonus, price moves and leagues that update as you watch.">
+
+<!-- Open Graph, because the whole point of this page is that it gets pasted
+     into WhatsApp and Messages, and a link with no preview looks like spam. -->
+<meta property="og:title" content="BFL — Bhailog Fantasy League">
+<meta property="og:description" content="Live Fantasy Premier League points with projected bonus, price moves and leagues that update as you watch.">
+<meta property="og:type" content="website">
+</head>
+<body>
+<main>
+
+<h1>Get BFL</h1>
+<p class="sub">Bhailog Fantasy League</p>
+
+<p>A faster way to follow your Fantasy Premier League team — live points with
+projected bonus, price moves, and leagues that update as you watch.</p>
+
+<p id="stores">
+  <a id="android" href="https://play.google.com/store/apps/details?id=com.bhailog.fantasyleague">Get it on Google Play</a><br>
+  <a id="ios" href="">Download on the App Store</a>
+</p>
+<p id="soon" class="sub" hidden>BFL is on its way to Google Play and the App Store. This
+page will take you straight there the moment it is listed, so keep the link.</p>
+
+<p id="note" class="sub"></p>
+
+<footer>
+BFL is an independent app. It is not affiliated with, endorsed by, sponsored by or
+connected to the Premier League or Fantasy Premier League. All team and player data
+comes from the public Fantasy Premier League game.
+</footer>
+
+</main>
+
+<script>
+/*
+ * Send each visitor to the store their phone can actually install from.
+ *
+ * This page exists so that one link can be shared without the sender knowing
+ * which phone the recipient has. It is the only piece of the share feature
+ * that needs to know there is more than one store.
+ *
+ * Both links stay visible and the redirect is the enhancement, not the
+ * mechanism: a desktop visitor, a locked-down browser and a crawler building
+ * a link preview all need something to read. A store link that is not live
+ * yet is left out of the markup rather than pointed at a 404 — see the
+ * `ios` href above, which stays empty until App Store Connect issues an id.
+ */
+(function () {
+  // Flip these as each listing goes live. Nothing in the app changes; links
+  // already sitting in people's chats start working the moment these do.
+  var PLAY_LIVE = false;
+  var IOS_APP_ID = ''; // fill in once App Store Connect issues one
+
+  var android = document.getElementById('android');
+  var ios = document.getElementById('ios');
+  var note = document.getElementById('note');
+  var soon = document.getElementById('soon');
+
+  function drop(el) {
+    if (el.nextSibling && el.nextSibling.nodeName === 'BR') el.parentNode.removeChild(el.nextSibling);
+    el.parentNode.removeChild(el);
+  }
+
+  if (IOS_APP_ID) ios.href = 'https://apps.apple.com/app/id' + IOS_APP_ID; else drop(ios);
+  if (!PLAY_LIVE) drop(android);
+
+  // A link that leads to "item not found" is worse than no link, so a store
+  // that is not live yet gets a sentence instead of a button.
+  if (!PLAY_LIVE && !IOS_APP_ID) soon.hidden = false;
+
+  var ua = navigator.userAgent || '';
+  var isAndroid = /Android/i.test(ua);
+  var isApple = /iPhone|iPad|iPod/i.test(ua);
+
+  var target = null;
+  if (isAndroid && PLAY_LIVE) target = android.href;
+  else if (isApple && IOS_APP_ID) target = ios.href;
+
+  if (target) {
+    note.textContent = 'Taking you to the store…';
+    // `replace` rather than `assign`, so Back returns to whatever the link was
+    // shared in instead of bouncing straight out to the store again.
+    location.replace(target);
+  } else if (isApple && PLAY_LIVE) {
+    note.textContent = 'The iPhone version is not out yet. Android is available now.';
+  } else if (isAndroid && IOS_APP_ID) {
+    note.textContent = 'The Android version is not out yet. iPhone is available now.';
+  }
+})();
+</script>
+</body>
+</html>
