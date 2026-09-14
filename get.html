@@ -8,10 +8,21 @@
 <meta name="description" content="BFL is a faster way to follow your Fantasy Premier League team — live points with projected bonus, price moves and leagues that update as you watch.">
 
 <!-- Open Graph, because the whole point of this page is that it gets pasted
-     into WhatsApp and Messages, and a link with no preview looks like spam. -->
+     into WhatsApp and Messages, and a link with no preview looks like spam.
+     The image is the app icon, so the card in a chat looks like the app it
+     leads to. Say Google Play in the description the day PLAY_LIVE flips. -->
 <meta property="og:title" content="BFL — Bhailog Fantasy League">
-<meta property="og:description" content="Live Fantasy Premier League points with projected bonus, price moves and leagues that update as you watch.">
+<meta property="og:description" content="Download BFL on the App Store: live Fantasy Premier League points with projected bonus, price moves and leagues that update as you watch.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://shivam3164.github.io/bfl-privacy/get.html">
+<meta property="og:image" content="https://shivam3164.github.io/bfl-privacy/bfl-icon.jpg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="600">
+<meta property="og:image:alt" content="The BFL app icon">
+<meta name="twitter:card" content="summary">
+<!-- Safari's own "Open in the App Store" banner, for an iPhone that lands
+     here without being forwarded. -->
+<meta name="apple-itunes-app" content="app-id=6807754958">
 </head>
 <body>
 <main>
@@ -57,7 +68,7 @@ comes from the public Fantasy Premier League game.
   // Flip these as each listing goes live. Nothing in the app changes; links
   // already sitting in people's chats start working the moment these do.
   var PLAY_LIVE = false;
-  var IOS_APP_ID = ''; // fill in once App Store Connect issues one
+  var IOS_APP_ID = '6807754958'; // live on the App Store since 11 Sep 2026
 
   var android = document.getElementById('android');
   var ios = document.getElementById('ios');
