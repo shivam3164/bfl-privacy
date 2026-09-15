@@ -10,9 +10,9 @@
 <!-- Open Graph, because the whole point of this page is that it gets pasted
      into WhatsApp and Messages, and a link with no preview looks like spam.
      The image is the app icon, so the card in a chat looks like the app it
-     leads to. Say Google Play in the description the day PLAY_LIVE flips. -->
+     leads to. -->
 <meta property="og:title" content="BFL — Bhailog Fantasy League">
-<meta property="og:description" content="Download BFL on the App Store: live Fantasy Premier League points with projected bonus, price moves and leagues that update as you watch.">
+<meta property="og:description" content="Download BFL on the App Store or Google Play: live Fantasy Premier League points with projected bonus, price moves and leagues that update as you watch.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shivam3164.github.io/bfl-privacy/get.html">
 <meta property="og:image" content="https://shivam3164.github.io/bfl-privacy/bfl-icon.jpg">
@@ -67,7 +67,7 @@ comes from the public Fantasy Premier League game.
 (function () {
   // Flip these as each listing goes live. Nothing in the app changes; links
   // already sitting in people's chats start working the moment these do.
-  var PLAY_LIVE = false;
+  var PLAY_LIVE = true; // live on Google Play since 15 Sep 2026
   var IOS_APP_ID = '6807754958'; // live on the App Store since 11 Sep 2026
 
   var android = document.getElementById('android');
